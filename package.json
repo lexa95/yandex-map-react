@@ -1,0 +1,29 @@
+{
+  "name": "second",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "yandex-map-react": "^1.0.0-beta.13"
+  },
+  "devDependencies": {
+    "coffee-script": "^1.11.1",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-coffee": "^2.3.3",
+    "gulp-connect": "^5.0.0",
+    "gulp-jasmine": "^2.4.2",
+    "gulp-notify": "^2.2.0",
+    "gulp-react": "^3.1.0",
+    "gulp-requirejs": "^0.3.0",
+    "gulp-uglify": "^2.0.0",
+    "jasmine": "^2.5.2",
+    "react": "^15.4.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

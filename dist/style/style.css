@@ -1,0 +1,33 @@
+#holder { 
+    border: 3px dashed #ccc; 
+    width: 100px; 
+    height: 100px; 
+    margin: 20px auto;
+    padding-top: 35px;
+    color: #ccc;
+}
+
+#content{
+    height: 100vh;
+    overflow: scroll;
+}
+
+body{
+    font-weight: bold;
+}
+.placemark{
+    margin-bottom: 10px; 
+}
+
+.button{
+    border: none;
+    margin: 2px 2px;
+}
+
+#addPlacemark{
+    margin: 2px;
+}
+
+.active{
+    background-color: #1C90F3; 
+}
