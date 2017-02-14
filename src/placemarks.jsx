@@ -1,6 +1,3 @@
-//var React = require("react");
-//var ReactTestUtils = require('react-addons-test-utils') // ES5 with npm
-
 var Placemark = React.createClass({
     getInitialState: function() {
         this.props.map.geoObjects.add(this.props.placemark);
@@ -27,19 +24,19 @@ var Placemark = React.createClass({
                 <div> 
                     <div>
                         name: 
-                        <span contentEditable disableContentEditableWarning onBlur={this.props.changePlacemark} key={this.props.index}>
+                        <span contentEditable disableContentEditableWarning onBlur={this.props.changePlacemark} key={this.props.index} className="name">
                             {this.props.placemark.properties.getAll().hintContent}
                         </span>
                     </div>
                     
                     <div>
-                        latitude: <span> {this.props.placemark.geometry.getCoordinates()[0]}</span>
-                        longitude: <span> {this.props.placemark.geometry.getCoordinates()[1]}</span>
+                        latitude: <span className="latitude"> {this.props.placemark.geometry.getCoordinates()[0]}</span>
+                        longitude: <span className="longitude"> {this.props.placemark.geometry.getCoordinates()[1]}</span>
                     </div>
                 </div>
                 
-                <button onClick={this.props.deletePlacemark} value={this.props.index} className="button">Remove</button>
-                <button className={ this.props.placemark.isDisplay ? 'button active' : 'button' }
+                <button onClick={this.props.deletePlacemark} value={this.props.index} className="btn_remove button">Remove</button>
+                <button className={ this.props.placemark.isDisplay ? 'button active btn_hide' : 'button btn_hide' }
                     onClick={this.hidePlacemark}>Hide</button>
             </div>
         );
@@ -211,9 +208,6 @@ var Placemarks = React.createClass({
         circleGeometry.setMap(this.state.map);
 
         for(var i = 0; i < placemarks.length; i++){
-            console.log(circleGeometry.contains([
-                placemarks[i].geometry.getCoordinates()[0], 
-                placemarks[i].geometry.getCoordinates()[1]]))
 
             if(circleGeometry.contains([placemarks[i].geometry.getCoordinates()[0], 
                                         placemarks[i].geometry.getCoordinates()[1]])){
@@ -280,9 +274,9 @@ var Placemarks = React.createClass({
                         
                             <div className="container-fluid">   
                                 <div className="row">
-                                    <div className="col-xs-12"><input type="text" ref="name" placeholder="name"/></div>
-                                    <div className="col-xs-12"><input type="number" step="any" ref="latitude" placeholder="latitude"/></div>
-                                    <div className="col-xs-12"><input type="number" step="any" ref="longitude" placeholder="longitude"/></div>
+                                    <div className="col-xs-12"><input type="text" ref="name" placeholder="name" id="addName"/></div>
+                                    <div className="col-xs-12"><input type="number" step="any" ref="latitude" placeholder="latitude" id="addLatitude"/></div>
+                                    <div className="col-xs-12"><input type="number" step="any" ref="longitude" placeholder="longitude" id="addLongitude"/></div>
                                 </div>
                             </div>  
 
@@ -296,18 +290,15 @@ var Placemarks = React.createClass({
                         
                             <div className="container-fluid">   
                                 <div className="row">
-                                    <div className="col-xs-12"><input type="number" ref="radius" placeholder="radius"/></div>
-                                    <div className="col-xs-12"><input type="number" step="any" ref="center_latitude" placeholder="latitude"/></div>
-                                    <div className="col-xs-12"><input type="number" step="any" ref="center_longitude" placeholder="longitude"/></div>
+                                    <div className="col-xs-12"><input type="number" ref="radius" placeholder="radius" id="filterRadius"/></div>
+                                    <div className="col-xs-12"><input type="number" step="any" ref="center_latitude" placeholder="latitude" id="filterLatitude"/></div>
+                                    <div className="col-xs-12"><input type="number" step="any" ref="center_longitude" placeholder="longitude" id="filterLongitude"/></div>
                                 </div>
                             </div>  
 
-                            <button id="addPlacemark"> display </button>  
+                            <button id="addFilter"> display </button>  
                         </form>  
                     </div>
                 </div>;              
     }
 });
-
-
-module.exports = { placemarks: Placemarks, placemark: Placemark};

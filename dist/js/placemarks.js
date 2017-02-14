@@ -1,6 +1,3 @@
-//var React = require("react");
-//var ReactTestUtils = require('react-addons-test-utils') // ES5 with npm
-
 var Placemark = React.createClass({displayName: "Placemark",
     getInitialState: function() {
         this.props.map.geoObjects.add(this.props.placemark);
@@ -27,19 +24,19 @@ var Placemark = React.createClass({displayName: "Placemark",
                 React.createElement("div", null, 
                     React.createElement("div", null, 
                         "name:",  
-                        React.createElement("span", {contentEditable: true, disableContentEditableWarning: true, onBlur: this.props.changePlacemark, key: this.props.index}, 
+                        React.createElement("span", {contentEditable: true, disableContentEditableWarning: true, onBlur: this.props.changePlacemark, key: this.props.index, className: "name"}, 
                             this.props.placemark.properties.getAll().hintContent
                         )
                     ), 
                     
                     React.createElement("div", null, 
-                        "latitude: ", React.createElement("span", null, " ", this.props.placemark.geometry.getCoordinates()[0]), 
-                        "longitude: ", React.createElement("span", null, " ", this.props.placemark.geometry.getCoordinates()[1])
+                        "latitude: ", React.createElement("span", {className: "latitude"}, " ", this.props.placemark.geometry.getCoordinates()[0]), 
+                        "longitude: ", React.createElement("span", {className: "longitude"}, " ", this.props.placemark.geometry.getCoordinates()[1])
                     )
                 ), 
                 
-                React.createElement("button", {onClick: this.props.deletePlacemark, value: this.props.index, className: "button"}, "Remove"), 
-                React.createElement("button", {className:  this.props.placemark.isDisplay ? 'button active' : 'button', 
+                React.createElement("button", {onClick: this.props.deletePlacemark, value: this.props.index, className: "btn_remove button"}, "Remove"), 
+                React.createElement("button", {className:  this.props.placemark.isDisplay ? 'button active btn_hide' : 'button btn_hide', 
                     onClick: this.hidePlacemark}, "Hide")
             )
         );
@@ -211,9 +208,6 @@ var Placemarks = React.createClass({displayName: "Placemarks",
         circleGeometry.setMap(this.state.map);
 
         for(var i = 0; i < placemarks.length; i++){
-            console.log(circleGeometry.contains([
-                placemarks[i].geometry.getCoordinates()[0], 
-                placemarks[i].geometry.getCoordinates()[1]]))
 
             if(circleGeometry.contains([placemarks[i].geometry.getCoordinates()[0], 
                                         placemarks[i].geometry.getCoordinates()[1]])){
@@ -280,9 +274,9 @@ var Placemarks = React.createClass({displayName: "Placemarks",
                         
                             React.createElement("div", {className: "container-fluid"}, 
                                 React.createElement("div", {className: "row"}, 
-                                    React.createElement("div", {className: "col-xs-12"}, React.createElement("input", {type: "text", ref: "name", placeholder: "name"})), 
-                                    React.createElement("div", {className: "col-xs-12"}, React.createElement("input", {type: "number", step: "any", ref: "latitude", placeholder: "latitude"})), 
-                                    React.createElement("div", {className: "col-xs-12"}, React.createElement("input", {type: "number", step: "any", ref: "longitude", placeholder: "longitude"}))
+                                    React.createElement("div", {className: "col-xs-12"}, React.createElement("input", {type: "text", ref: "name", placeholder: "name", id: "addName"})), 
+                                    React.createElement("div", {className: "col-xs-12"}, React.createElement("input", {type: "number", step: "any", ref: "latitude", placeholder: "latitude", id: "addLatitude"})), 
+                                    React.createElement("div", {className: "col-xs-12"}, React.createElement("input", {type: "number", step: "any", ref: "longitude", placeholder: "longitude", id: "addLongitude"}))
                                 )
                             ), 
 
@@ -296,18 +290,15 @@ var Placemarks = React.createClass({displayName: "Placemarks",
                         
                             React.createElement("div", {className: "container-fluid"}, 
                                 React.createElement("div", {className: "row"}, 
-                                    React.createElement("div", {className: "col-xs-12"}, React.createElement("input", {type: "number", ref: "radius", placeholder: "radius"})), 
-                                    React.createElement("div", {className: "col-xs-12"}, React.createElement("input", {type: "number", step: "any", ref: "center_latitude", placeholder: "latitude"})), 
-                                    React.createElement("div", {className: "col-xs-12"}, React.createElement("input", {type: "number", step: "any", ref: "center_longitude", placeholder: "longitude"}))
+                                    React.createElement("div", {className: "col-xs-12"}, React.createElement("input", {type: "number", ref: "radius", placeholder: "radius", id: "filterRadius"})), 
+                                    React.createElement("div", {className: "col-xs-12"}, React.createElement("input", {type: "number", step: "any", ref: "center_latitude", placeholder: "latitude", id: "filterLatitude"})), 
+                                    React.createElement("div", {className: "col-xs-12"}, React.createElement("input", {type: "number", step: "any", ref: "center_longitude", placeholder: "longitude", id: "filterLongitude"}))
                                 )
                             ), 
 
-                            React.createElement("button", {id: "addPlacemark"}, " display ")
+                            React.createElement("button", {id: "addFilter"}, " display ")
                         )
                     )
                 );              
     }
 });
-
-
-module.exports = { placemarks: Placemarks, placemark: Placemark};

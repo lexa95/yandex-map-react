@@ -1,10 +1,10 @@
 {
   "name": "second",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "dependencies": {
     "gulp": "^3.9.1",
+    "webpack": "^1.14.0",
     "yandex-map-react": "^1.0.0-beta.13"
   },
   "devDependencies": {
@@ -19,11 +19,23 @@
     "gulp-requirejs": "^0.3.0",
     "gulp-uglify": "^2.0.0",
     "jasmine": "^2.5.2",
+    "jasmine-core": "^2.5.2",
+    "karma": "^1.3.0",
+    "karma-jasmine": "^1.1.0",
     "react": "^15.4.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lexa95/yandex-map-react.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lexa95/yandex-map-react/issues"
+  },
+  "homepage": "https://github.com/lexa95/yandex-map-react#readme",
+  "description": ""
 }
